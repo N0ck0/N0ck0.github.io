@@ -1,16 +1,1 @@
-## Hi there 👋
-
-<!--
-**N0ck0/N0ck0** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
-
-Here are some ideas to get you started:
-
-- 🔭 I’m currently working on Fundies 1 projects
-- 🌱 I’m currently learning Racket
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with knowing what to learn next
-- 💬 Ask me about ...
-- 📫 How to reach me: boden.n@northeastern.edu
-- 😄 Pronouns: he/him
-- ⚡ Fun fact: I like to ski!
--->
+Hi, I'm Nicholas! I have a passion for building scalable, impactful software. I bring strong technical fundamentals combined with real-world experience developing production frameworks. I thrive on solving difficult problems across the full stack, from low-level systems optimization to user-facing applications, and I'm particularly drawn to infrastructure where I can leverage both my mathematical and technical skills. I aim to build technology that operates at scale while continuously deepening my expertise!
