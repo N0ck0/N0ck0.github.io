@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nicholas Boden</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0d1117;
+      --bg2: #161b22;
+      --bg3: #21262d;
+      --border: #30363d;
+      --text: #e6edf3;
+      --muted: #8b949e;
+      --accent: #58a6ff;
+      --accent2: #3fb950;
+      --accent3: #d2a8ff;
+      --tag-bg: #1f3a5f;
+      --tag-text: #58a6ff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(13,17,23,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 58px;
+    }
+    .nav-logo {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1rem; font-weight: 500;
+      color: var(--accent);
+    }
+    .nav-logo span { color: var(--muted); }
+    .nav-links { display: flex; gap: 1.5rem; list-style: none; }
+    .nav-links a {
+      color: var(--muted); text-decoration: none;
+      font-size: 0.875rem; font-weight: 500;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    /* HERO */
+    .hero {
+      max-width: 860px; margin: 0 auto;
+      padding: 6rem 2rem 4rem;
+    }
+    .hero-eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem; color: var(--accent2);
+      letter-spacing: .1em; text-transform: uppercase;
+      margin-bottom: .75rem;
+    }
+    .hero h1 {
+      font-size: clamp(2.4rem, 6vw, 3.8rem);
+      font-weight: 700; line-height: 1.1;
+      margin-bottom: 1.25rem;
+    }
+    .hero h1 em { font-style: normal; color: var(--accent); }
+    .hero-sub {
+      font-size: 1.1rem; color: var(--muted);
+      max-width: 560px; margin-bottom: 2rem;
+    }
+    .hero-links { display: flex; gap: .75rem; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: .4rem;
+      padding: .55rem 1.1rem; border-radius: 6px;
+      font-size: .875rem; font-weight: 500;
+      text-decoration: none; transition: all .2s;
+    }
+    .btn-primary { background: var(--accent); color: #0d1117; }
+    .btn-primary:hover { background: #79c0ff; }
+    .btn-ghost {
+      border: 1px solid var(--border); color: var(--text);
+      background: transparent;
+    }
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* SECTION WRAPPER */
+    section { max-width: 860px; margin: 0 auto; padding: 3rem 2rem; }
+    .section-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .75rem; color: var(--accent);
+      text-transform: uppercase; letter-spacing: .12em;
+      margin-bottom: 1.5rem;
+      display: flex; align-items: center; gap: .6rem;
+    }
+    .section-title::after {
+      content: ''; flex: 1; height: 1px; background: var(--border);
+    }
+
+    /* ABOUT */
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+    @media(max-width:600px){ .about-grid { grid-template-columns: 1fr; } }
+    .about-card {
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: 10px; padding: 1.25rem 1.5rem;
+    }
+    .about-card h3 { font-size: .8rem; color: var(--muted); margin-bottom: .5rem; text-transform: uppercase; letter-spacing: .08em; }
+    .about-card p, .about-card ul { font-size: .9rem; color: var(--text); }
+    .about-card ul { list-style: none; }
+    .about-card ul li::before { content: '→ '; color: var(--accent); }
+
+    /* SKILLS */
+    .skills-grid {
+      display: flex; flex-wrap: wrap; gap: .5rem;
+    }
+    .skill-tag {
+      background: var(--tag-bg); color: var(--tag-text);
+      border: 1px solid #1f6feb;
+      border-radius: 999px; padding: .3rem .85rem;
+      font-size: .8rem; font-family: 'JetBrains Mono', monospace;
+    }
+    .skill-tag.green { background: #1a3a2a; color: var(--accent2); border-color: #238636; }
+    .skill-tag.purple { background: #2d1f52; color: var(--accent3); border-color: #6e40c9; }
+
+    /* EXPERIENCE */
+    .timeline { display: flex; flex-direction: column; gap: 1.25rem; }
+    .exp-card {
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: 10px; padding: 1.25rem 1.5rem;
+      position: relative;
+    }
+    .exp-card:hover { border-color: var(--accent); }
+    .exp-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: .5rem; margin-bottom: .6rem; }
+    .exp-title { font-weight: 600; font-size: 1rem; }
+    .exp-company { color: var(--accent); font-size: .875rem; }
+    .exp-date {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .75rem; color: var(--muted);
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: 4px; padding: .2rem .5rem;
+      white-space: nowrap;
+    }
+    .exp-bullets { list-style: none; padding: 0; }
+    .exp-bullets li {
+      font-size: .875rem; color: var(--muted);
+      padding: .2rem 0 .2rem 1rem;
+      position: relative;
+    }
+    .exp-bullets li::before { content: '·'; position: absolute; left: 0; color: var(--accent); font-size: 1.2rem; line-height: 1.4; }
+
+    /* PROJECTS */
+    .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+    @media(max-width:600px){ .projects-grid { grid-template-columns: 1fr; } }
+    .proj-card {
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: 10px; padding: 1.25rem 1.5rem;
+      display: flex; flex-direction: column; gap: .6rem;
+      transition: border-color .2s;
+    }
+    .proj-card:hover { border-color: var(--accent3); }
+    .proj-name { font-weight: 600; font-size: .95rem; }
+    .proj-tech {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .72rem; color: var(--accent3);
+    }
+    .proj-desc { font-size: .85rem; color: var(--muted); flex: 1; }
+
+    /* EDUCATION */
+    .edu-card {
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: 10px; padding: 1.5rem;
+      display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+    }
+    .edu-card h3 { font-size: 1rem; font-weight: 600; margin-bottom: .25rem; }
+    .edu-card .school { color: var(--accent); font-size: .875rem; margin-bottom: .5rem; }
+    .edu-card .details { font-size: .85rem; color: var(--muted); }
+    .edu-badge {
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: 8px; padding: .75rem 1rem;
+      font-size: .85rem; text-align: center; min-width: 120px;
+    }
+    .edu-badge .val { font-size: 1.4rem; font-weight: 700; color: var(--accent2); }
+    .edu-badge .lbl { font-size: .7rem; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem;
+      text-align: center;
+      font-size: .8rem; color: var(--muted);
+    }
+    footer a { color: var(--accent); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">nb<span>.dev</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#education">Education</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <p class="hero-eyebrow">// welcome to my corner of the internet</p>
+  <h1>Hi, I'm <em>Nicholas Boden</em> —<br>CS & Math student,<br>software engineer.</h1>
+  <p class="hero-sub">
+    I'm a second-year at Northeastern University passionate about systems programming, distributed systems, and building software that scales. Currently seeking co-ops for May–December 2026.
+  </p>
+  <div class="hero-links">
+    <a class="btn btn-primary" href="mailto:boden.n@northeastern.edu">Get in touch</a>
+    <a class="btn btn-ghost" href="https://linkedin.com/in/nicholas-m-boden" target="_blank">LinkedIn</a>
+    <a class="btn btn-ghost" href="https://github.com/N0ck0" target="_blank">GitHub</a>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <p class="section-title">About me</p>
+  <div class="about-grid">
+    <div class="about-card" style="grid-column: span 2">
+      <p style="font-size:.95rem; color: var(--text); line-height: 1.75;">
+        I'm a Computer Science and Mathematics double major at Northeastern's Khoury College with a 3.89 GPA. I love working close to the metal — from building FUSE filesystems in C to architecting frontend infrastructure in TypeScript. When I'm not at a keyboard I'm on skis, on a tennis court, or in the weight room.
+      </p>
+    </div>
+    <div class="about-card">
+      <h3>Currently</h3>
+      <ul>
+        <li>SWE Intern @ Sherpa 6</li>
+        <li>NEU Honors Program</li>
+        <li>Alpine Ski Team</li>
+      </ul>
+    </div>
+    <div class="about-card">
+      <h3>Interests</h3>
+      <ul>
+        <li>Systems & Distributed Systems</li>
+        <li>Algorithms & Math</li>
+        <li>Skiing · Tennis · Hiking</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section>
+  <p class="section-title">Technical skills</p>
+  <div style="display:flex;flex-direction:column;gap:1rem;">
+    <div>
+      <p style="font-size:.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem;">Languages</p>
+      <div class="skills-grid">
+        <span class="skill-tag">Java</span>
+        <span class="skill-tag">C</span>
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">TypeScript</span>
+        <span class="skill-tag">JavaScript</span>
+        <span class="skill-tag">SQL</span>
+        <span class="skill-tag">HTML/CSS</span>
+        <span class="skill-tag">Racket</span>
+      </div>
+    </div>
+    <div>
+      <p style="font-size:.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem;">Tools & Frameworks</p>
+      <div class="skills-grid">
+        <span class="skill-tag green">Node.js</span>
+        <span class="skill-tag green">Angular</span>
+        <span class="skill-tag green">Git / GitHub</span>
+        <span class="skill-tag green">Jenkins</span>
+        <span class="skill-tag green">Jira</span>
+        <span class="skill-tag green">Unix CLI</span>
+        <span class="skill-tag green">FUSE API</span>
+      </div>
+    </div>
+    <div>
+      <p style="font-size:.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem;">Concepts</p>
+      <div class="skills-grid">
+        <span class="skill-tag purple">Systems Programming</span>
+        <span class="skill-tag purple">Distributed Systems</span>
+        <span class="skill-tag purple">Algorithms</span>
+        <span class="skill-tag purple">Database Design</span>
+        <span class="skill-tag purple">i18n / Localization</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <p class="section-title">Experience</p>
+  <div class="timeline">
+
+    <div class="exp-card">
+      <div class="exp-header">
+        <div>
+          <div class="exp-title">Software Engineering Intern</div>
+          <div class="exp-company">Sherpa 6</div>
+        </div>
+        <div class="exp-date">Jul 2025 — Present · Remote</div>
+      </div>
+      <ul class="exp-bullets">
+        <li>Architected and deployed a TypeScript internationalization framework to standardize translation infrastructure across an internal Angular application, enabling dynamic language switching for international market expansion.</li>
+        <li>Collaborated with a cross-functional intern team to design extensible framework architecture and implement a production deployment pipeline.</li>
+        <li>Presented technical solution and business value to company executives, receiving approval for production deployment.</li>
+      </ul>
+    </div>
+
+    <div class="exp-card">
+      <div class="exp-header">
+        <div>
+          <div class="exp-title">Code Coach</div>
+          <div class="exp-company">Coder School</div>
+        </div>
+        <div class="exp-date">Jul 2023 — Jul 2024 · Sudbury, MA</div>
+      </div>
+      <ul class="exp-bullets">
+        <li>Instructed 15+ students on programming fundamentals (Scratch, Python, Java) across beginner to intermediate levels.</li>
+        <li>Developed customized lesson plans and one-on-one mentorship, achieving 90%+ student satisfaction ratings.</li>
+      </ul>
+    </div>
+
+    <div class="exp-card">
+      <div class="exp-header">
+        <div>
+          <div class="exp-title">Software Engineering Intern</div>
+          <div class="exp-company">Beacon Interactive Systems</div>
+        </div>
+        <div class="exp-date">Jul — Aug 2023 · Waltham, MA</div>
+      </div>
+      <ul class="exp-bullets">
+        <li>Developed and organized project tasks for US Department of Defense-contracted data analytics software.</li>
+        <li>Identified and documented 20+ software defects, contributing to QA processes for defense applications.</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <p class="section-title">Projects</p>
+  <div class="projects-grid">
+
+    <div class="proj-card">
+      <div class="proj-name">NUFS Filesystem</div>
+      <div class="proj-tech">C · FUSE API</div>
+      <div class="proj-desc">
+        Engineered a complete FUSE-based filesystem driver implementing POSIX-compliant file operations from scratch — supporting nested directories, medium-sized files, and full CRUD operations. Debugged complex memory management and pointer arithmetic issues in inode and directory structures.
+      </div>
+      <div style="font-size:.75rem;color:var(--muted);font-family:'JetBrains Mono',monospace;">Nov – Dec 2025</div>
+    </div>
+
+    <div class="proj-card">
+      <div class="proj-name">Seam Carving Image Editor</div>
+      <div class="proj-tech">Java</div>
+      <div class="proj-desc">
+        Interactive image editor implementing the seam carving algorithm for content-aware resizing. Built a 2D linked pixel graph enforcing structural invariants across 250k+ nodes, with real-time animation and visualization modes including energy mapping and cumulative weight display.
+      </div>
+      <div style="font-size:.75rem;color:var(--muted);font-family:'JetBrains Mono',monospace;">Mar – Apr 2025</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <p class="section-title">Education</p>
+  <div class="edu-card">
+    <div>
+      <h3>BS Computer Science & Mathematics</h3>
+      <div class="school">Northeastern University — Khoury College of Computer Science</div>
+      <div class="details">
+        Expected May 2028 · Boston, MA<br><br>
+        <strong style="color:var(--text);">Coursework:</strong> Algorithms · Computer Systems · Networks & Distributed Systems · Databases · OOD · Linear Algebra · Probability & Statistics<br><br>
+        <strong style="color:var(--text);">Honors:</strong> NEU Honors Program · Dean's List (All Semesters) · National Merit Finalist · Presidential Scholar Nominee
+      </div>
+    </div>
+    <div style="display:flex;gap:.75rem;align-items:flex-start;flex-wrap:wrap;">
+      <div class="edu-badge">
+        <div class="val">3.89</div>
+        <div class="lbl">GPA</div>
+      </div>
+      <div class="edu-badge">
+        <div class="val">1600</div>
+        <div class="lbl">SAT</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Built with vanilla HTML/CSS · <a href="mailto:boden.n@northeastern.edu">boden.n@northeastern.edu</a> · Boston, MA</p>
+</footer>
+
+</body>
+</html>
