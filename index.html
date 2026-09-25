@@ -242,7 +242,7 @@
     <div class="about-card">
       <h3>Currently</h3>
       <ul>
-        <li>SWE Intern @ Raytheon Technologies</li>
+        <li>SWE Co-op @ TD Bank</li>
         <li>NEU Honors Program</li>
         <li>Alpine Ski Team</li>
       </ul>
@@ -265,35 +265,27 @@
     <div>
       <p style="font-size:.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem;">Languages</p>
       <div class="skills-grid">
-        <span class="skill-tag">Java</span>
-        <span class="skill-tag">C</span>
         <span class="skill-tag">C++</span>
         <span class="skill-tag">Python</span>
+        <span class="skill-tag">Java</span>
+        <span class="skill-tag">C</span>
         <span class="skill-tag">TypeScript</span>
-        <span class="skill-tag">JavaScript</span>
         <span class="skill-tag">SQL</span>
-        <span class="skill-tag">HTML/CSS</span>
-        <span class="skill-tag">Racket</span>
       </div>
     </div>
     <div>
-      <p style="font-size:.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem;">Tools & Frameworks</p>
+      <p style="font-size:.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem;">Tools & Technologies</p>
       <div class="skills-grid">
-        <span class="skill-tag green">Node.js</span>
-        <span class="skill-tag green">Angular</span>
-        <span class="skill-tag green">Git / GitHub</span>
+        <span class="skill-tag green">Git</span>
+        <span class="skill-tag green">Linux</span>
+        <span class="skill-tag green">Docker</span>
+        <span class="skill-tag green">Kubernetes</span>
+        <span class="skill-tag green">MySQL</span>
+        <span class="skill-tag green">AWS</span>
+        <span class="skill-tag green">Valgrind</span>
+        <span class="skill-tag green">Apache Kafka</span>
+        <span class="skill-tag green">Claude Code</span>
         <span class="skill-tag green">Jenkins</span>
-        <span class="skill-tag green">Jira</span>
-        <span class="skill-tag green">Unix CLI</span>
-      </div>
-    </div>
-    <div>
-      <p style="font-size:.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem;">Concepts</p>
-      <div class="skills-grid">
-        <span class="skill-tag purple">Systems Programming</span>
-        <span class="skill-tag purple">Algorithms</span>
-        <span class="skill-tag purple">Database Design</span>
-        <span class="skill-tag purple">i18n / Localization</span>
       </div>
     </div>
   </div>
@@ -307,14 +299,28 @@
     <div class="exp-card">
       <div class="exp-header">
         <div>
+          <div class="exp-title">Software Engineering Co-op</div>
+          <div class="exp-company">TD Bank</div>
+        </div>
+        <div class="exp-date">Aug 2026 — Present</div>
+      </div>
+      <ul class="exp-bullets">
+        <li>Building a service that reads Kafka topics from a Confluent instance and writes into an internal System of Engagement layer, surfacing data not previously tracked internally.</li>
+        <li>Working across API development, event streaming, and application monitoring on a scrum team within the Credit Cards and Unsecured Loans organization.</li>
+      </ul>
+    </div>
+
+    <div class="exp-card">
+      <div class="exp-header">
+        <div>
           <div class="exp-title">Software Engineering Intern</div>
           <div class="exp-company">Raytheon Technologies</div>
         </div>
         <div class="exp-date">Jun 2026 — Aug 2026</div>
       </div>
       <ul class="exp-bullets">
-        <li>Developing a 64-bit architecture migration for a mission-critical C++ software subsystem, maintaining full backwards compatibility with existing 32-bit interfaces while modernizing the underlying memory model and data type representations.</li>
-        <li>Engineering under strict defense software standards including MISRA C++ compliance, fixed-width integer types, and safety-critical validation requirements, in a zero-defect embedded systems environment.</li>
+        <li>Developed a 64-bit architecture migration for a mission-critical C++ software subsystem, maintaining full backwards compatibility with existing 32-bit interfaces while modernizing the underlying memory model and data type representations.</li>
+        <li>Engineered under strict defense software standards and rigorous validation requirements, including fixed-width integer types, in a zero-defect embedded systems environment.</li>
       </ul>
     </div>
 
@@ -370,10 +376,19 @@
   <div class="projects-grid">
 
     <div class="proj-card">
+      <div class="proj-name">Atlas — Cluster Event-Scheduling Simulator</div>
+      <div class="proj-tech">C++20 · CMake · GoogleTest</div>
+      <div class="proj-desc">
+        Built a discrete-event simulator modeling a compute cluster running a stochastic job workload, letting scheduling policies (First-Fit, Round-Robin, Resource-Aware) and queue back-filling be swapped independently and compared under byte-identical, reproducible conditions. Designed a paired-seed experiment harness that cut effect-size uncertainty ~150x — showing an apparent placement-policy gain was statistical noise, while EASY backfill scheduling cut median queue wait 97% (980.6s → 23.5s). <a href="https://github.com/N0ck0/atlas-simulator" target="_blank" style="color:var(--accent3);">github.com/N0ck0/atlas-simulator</a>
+      </div>
+      <div style="font-size:.75rem;color:var(--muted);font-family:'JetBrains Mono',monospace;">Sep 2026 — Present</div>
+    </div>
+
+    <div class="proj-card">
       <div class="proj-name">NUFS Filesystem</div>
       <div class="proj-tech">C · FUSE API</div>
       <div class="proj-desc">
-        Engineered a complete FUSE-based filesystem driver implementing POSIX-compliant file operations from scratch — supporting nested directories, medium-sized files, and full CRUD operations. Debugged complex memory management and pointer arithmetic issues in inode and directory structures.
+        Engineered a complete FUSE-based filesystem driver implementing POSIX-compliant file operations from scratch — supporting nested directories, medium-sized files, and full CRUD operations. Designed a first-fit memory block allocator with aggressive defragmentation, and debugged complex memory management and pointer arithmetic issues in inode and directory structures.
       </div>
       <div style="font-size:.75rem;color:var(--muted);font-family:'JetBrains Mono',monospace;">Nov – Dec 2025</div>
     </div>
